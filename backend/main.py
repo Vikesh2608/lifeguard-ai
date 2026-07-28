@@ -26,7 +26,14 @@ from security import (
     verify_password
 )
 
-app = FastAPI(title="LifeGuard AI")
+app = FastAPI(
+    title="LifeGuard AI API",
+    description="Backend API for LifeGuard AI",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
+)
 
 geolocator = Nominatim(user_agent="lifeguard_ai")
 
