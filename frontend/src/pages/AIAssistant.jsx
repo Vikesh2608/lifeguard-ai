@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const API_URL = "http://127.0.0.1:8001";
+const API_URL = "https://lifeguard-ai-ij32.onrender.com";
 
 const STARTER_MESSAGE = {
   id: "welcome",
