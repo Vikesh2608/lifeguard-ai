@@ -112,13 +112,33 @@ class EmergencyContact(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    email = Column(String(255))
+    # LifeGuard AI user's email
+    email = Column(
+        String(255),
+        nullable=False,
+        index=True
+    )
 
-    contact_name = Column(String(100))
+    contact_name = Column(
+        String(100),
+        nullable=False
+    )
 
-    contact_phone = Column(String(30))
+    contact_phone = Column(
+        String(30),
+        nullable=False
+    )
 
-    relationship = Column(String(50))
+    # Emergency contact's email
+    contact_email = Column(
+        String(255),
+        nullable=True
+    )
+
+    relationship = Column(
+        String(50),
+        nullable=False
+    )
 
     created_at = Column(
         DateTime,

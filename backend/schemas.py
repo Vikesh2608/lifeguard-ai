@@ -55,7 +55,8 @@ class SleepRequest(BaseModel):
 # ======================================
 
 class EmergencyContactRequest(BaseModel):
-    email: str
+    email: EmailStr
     contact_name: str
     contact_phone: str
-    relationship: str
+    contact_email: EmailStr | None = None
+    relationship: str 
