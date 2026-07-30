@@ -32,93 +32,86 @@ function Auth() {
   // LOGIN
   // ==========================================
 
-  async function handleLogin() {
-    setMessage("");
+ async function handleLogin() {
+  setMessage("");
 
-    if (!email.trim()) {
-      setMessage("Please enter your email address.");
-      return;
-    }
-
-    if (!password) {
-      setMessage("Please enter your password.");
-      return;
-    }
-
-    try {
-      setLoading(true);
-
-      const response = await fetch(`${API_URL}/login`, {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          email: email.trim(),
-          password: password,
-        }),
-      });
-
-      const data = await response.json();
-
-      console.log("Login response:", data);
-
-      if (!response.ok) {
-        setMessage(
-          data.detail || data.message || "Unable to sign in."
-        );
-        return;
-      }
-
-      if (data.message !== "Login successful") {
-        setMessage(data.message || "Login failed.");
-        return;
-      }
-
-      // ========================================
-      // SAVE LOGGED-IN USER
-      // ========================================
-
- // ========================================
-// SAVE LOGGED-IN USER
-// ========================================
-
-const loggedInUser = {
-  email: loginData.email,
-  first_name: loginData.first_name || firstName.trim(),
-  last_name: loginData.last_name || lastName.trim(),
-};
-
-localStorage.setItem(
-  "lifeguardUser",
-  JSON.stringify(loggedInUser)
-);
-
-localStorage.setItem("isLoggedIn", "true");
-
-// ========================================
-// GO TO DASHBOARD
-// ========================================
-
-navigate("/dashboard");
-
-      // ========================================
-      // GO TO DASHBOARD
-      // ========================================
-
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Login error:", error);
-
-      setMessage(
-        "Unable to connect to LifeGuard AI. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
+  if (!email.trim()) {
+    setMessage("Please enter your email address.");
+    return;
   }
+
+  if (!password) {
+    setMessage("Please enter your password.");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    const response = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email.trim(),
+        password: password,
+      }),
+    });
+
+    const data = await response.json();
+
+    console.log("Login response:", data);
+
+    if (!response.ok) {
+      setMessage(
+        data.detail ||
+        data.message ||
+        "Unable to sign in."
+      );
+      return;
+    }
+
+    if (data.message !== "Login successful") {
+      setMessage(
+        data.message || "Login failed."
+      );
+      return;
+    }
+
+    // ========================================
+    // SAVE LOGGED-IN USER
+    // ========================================
+
+    const loggedInUser = {
+      email: data.email,
+      first_name: data.first_name || "",
+      last_name: data.last_name || "",
+    };
+
+    localStorage.setItem(
+      "lifeguardUser",
+      JSON.stringify(loggedInUser)
+    );
+
+    localStorage.setItem("isLoggedIn", "true");
+
+    // ========================================
+    // GO TO DASHBOARD
+    // ========================================
+
+    navigate("/dashboard");
+
+  } catch (error) {
+    console.error("Login error:", error);
+
+    setMessage(
+      "Unable to connect to LifeGuard AI. Please try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+}
 
   // ==========================================
   // REGISTER
