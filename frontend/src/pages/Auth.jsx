@@ -81,7 +81,11 @@ function Auth() {
       // SAVE LOGGED-IN USER
       // ========================================
 
- const loggedInUser = {
+ // ========================================
+// SAVE LOGGED-IN USER
+// ========================================
+
+const loggedInUser = {
   email: loginData.email,
   first_name: loginData.first_name || firstName.trim(),
   last_name: loginData.last_name || lastName.trim(),
@@ -93,6 +97,12 @@ localStorage.setItem(
 );
 
 localStorage.setItem("isLoggedIn", "true");
+
+// ========================================
+// GO TO DASHBOARD
+// ========================================
+
+navigate("/dashboard");
 
       // ========================================
       // GO TO DASHBOARD
