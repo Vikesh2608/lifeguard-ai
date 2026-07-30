@@ -35,6 +35,18 @@ app = FastAPI(
     openapi_url="/openapi.json",
 )
 
+# ======================================
+# CREATE DATABASE TABLES
+# ======================================
+
+print("DATABASE HOST:", engine.url.host)
+print("DATABASE NAME:", engine.url.database)
+print("REGISTERED TABLES:", list(Base.metadata.tables.keys()))
+
+Base.metadata.create_all(bind=engine)
+
+print("DATABASE TABLE CREATION COMPLETED")
+
 geolocator = Nominatim(user_agent="lifeguard_ai")
 
 app.add_middleware(
