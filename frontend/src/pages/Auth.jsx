@@ -81,28 +81,18 @@ function Auth() {
       // SAVE LOGGED-IN USER
       // ========================================
 
-      localStorage.setItem("email", data.email);
-      localStorage.setItem(
-        "first_name",
-        data.first_name || ""
-      );
-      localStorage.setItem(
-        "last_name",
-        data.last_name || ""
-      );
+ const loggedInUser = {
+  email: loginData.email,
+  first_name: loginData.first_name || firstName.trim(),
+  last_name: loginData.last_name || lastName.trim(),
+};
 
-      // Simple authentication flag for MVP
-      localStorage.setItem("isLoggedIn", "true");
+localStorage.setItem(
+  "lifeguardUser",
+  JSON.stringify(loggedInUser)
+);
 
-      console.log(
-        "Stored email:",
-        localStorage.getItem("email")
-      );
-
-      console.log(
-        "Stored first name:",
-        localStorage.getItem("first_name")
-      );
+localStorage.setItem("isLoggedIn", "true");
 
       // ========================================
       // GO TO DASHBOARD
