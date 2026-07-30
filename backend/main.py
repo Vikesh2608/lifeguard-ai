@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from geopy.geocoders import Nominatim
 
-from database import SessionLocal
+from database import SessionLocal, Base, engine
 from models import (
     User,
     SOSAlert,
