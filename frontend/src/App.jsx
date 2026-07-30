@@ -12,6 +12,7 @@ import Family from "./pages/Family";
 import AIAssistant from "./pages/AIAssistant";
 import SOS from "./pages/SOS";
 import Hospitals from "./pages/Hospitals";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/ai" element={<AIAssistant />} />
             <Route path="/sos" element={<SOS />} />
             <Route path="/hospitals" element={<Hospitals />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
 

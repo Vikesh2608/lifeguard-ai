@@ -7,18 +7,20 @@ function Navbar() {
         🛡️ LifeGuard AI
       </NavLink>
 
-      <nav className="navbar-links">
-        <NavLink to="/">🏠 Home</NavLink>
-        <NavLink to="/dashboard">📊 Dashboard</NavLink>
-        <NavLink to="/wellness">😊 Wellness</NavLink>
-        <NavLink to="/family">👨‍👩‍👧 Family</NavLink>
-        <NavLink to="/ai">🤖 AI Assistant</NavLink>
-        <NavLink to="/sos">🚨 SOS</NavLink>
-        <NavLink to="/hospitals">🏥 Hospitals</NavLink>
-        <NavLink to="/auth" className="signin-link">
-          🔐 Sign In
-        </NavLink>
-      </nav>
+    <nav className="navbar-links">
+  <NavLink to="/">🏠 Home</NavLink>
+  <NavLink to="/dashboard">📊 Dashboard</NavLink>
+  <NavLink to="/wellness">😊 Wellness</NavLink>
+  <NavLink to="/family">👨‍👩‍👧 Family</NavLink>
+  <NavLink to="/ai">🤖 AI Assistant</NavLink>
+  <NavLink to="/sos">🚨 SOS</NavLink>
+  <NavLink to="/hospitals">🏥 Hospitals</NavLink>
+  <NavLink to="/about">ℹ️ About</NavLink>
+
+  <NavLink to="/auth" className="signin-link">
+    🔐 Sign In
+  </NavLink>
+</nav>
     </header>
   );
 }
