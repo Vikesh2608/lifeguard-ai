@@ -44,6 +44,17 @@ print("DATABASE NAME:", engine.url.database)
 print("REGISTERED TABLES:", list(Base.metadata.tables.keys()))
 
 Base.metadata.create_all(bind=engine)
+from sqlalchemy import text
+
+with engine.begin() as connection:
+    connection.execute(
+        text("""
+        ALTER TABLE emergency_contacts
+        ADD COLUMN IF NOT EXISTS contact_email VARCHAR(255);
+        """)
+    )
+
+print("CONTACT EMAIL MIGRATION COMPLETED")
 import os
 
 from sqlalchemy import create_engine
